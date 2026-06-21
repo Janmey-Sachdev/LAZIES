@@ -3,223 +3,349 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LAZYEDITOR BETA - Terminal Text Editor</title>
+    <title>Janmey Sachdev - Dev Portal</title>
     <style>
-
+        /* Base Vibe & Theme Variables */
         :root {
             --bg-main: #1a1b26;
-            --bg-sidebar: #1f2335;
-            --bg-terminal: #16161e;
+            --bg-card: #1f2335;
+            --bg-button: #24283b;
             --accent-blue: #7aa2f7;
-            --accent-purple: #bb9af7;
-            --text-main: #c0caf5;
-            --text-muted: #565f89;
-            --border: #414868;
+            --accent-teal: #00ffc4;
+            --accent-pink: #f7768e;
+            --text-main: #ffffff;
+            --text-muted: #a9b1d6;
         }
 
-        * {
-            box-sizing: border-box;
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+        }
+
+        /* --- STICKY NAVBAR WITH TWO MAIN MENUS --- */
+        .navbar {
+            background-color: var(--bg-main);
+            border-bottom: 2px solid var(--accent-blue);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+
+        /* Left Branding Group */
+        .brand-group {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-brand {
+            font-size: 1.4rem;
+            font-weight: 800;
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .brand-editor {
+            color: var(--text-main);
+        }
+
+        .brand-editor:hover {
+            color: var(--accent-blue);
+        }
+
+        .brand-ser {
+            color: var(--accent-pink);
+            background-color: var(--bg-button);
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            border: 1px solid var(--accent-pink);
+        }
+
+        .brand-ser:hover {
+            background-color: var(--accent-pink);
+            color: var(--bg-main);
+            box-shadow: 0 0 10px rgba(247, 118, 142, 0.4);
+        }
+
+        /* Right Navigation Items */
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
             margin: 0;
             padding: 0;
         }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-main);
-            color: var(--text-main);
-            line-height: 1.6;
-            padding: 2rem 1rem;
+        .nav-item {
+            margin-left: 2rem;
         }
 
-        .container {
+        .nav-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--text-main);
+        }
+
+        .git-icon {
+            font-size: 0.8rem;
+            margin-left: 2px;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            text-align: center;
+            padding: 5rem 2rem 3rem 2rem;
             max-width: 800px;
             margin: 0 auto;
         }
 
-        header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-            color: var(--accent-blue);
-            margin-bottom: 0.5rem;
-            font-weight: 700;
-        }
-
-        header p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-        }
-
-        .card {
-            background-color: var(--bg-sidebar);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        h2 {
-            color: var(--accent-purple);
+        .hero h1 {
+            font-size: 3rem;
             margin-bottom: 1rem;
-            font-size: 1.4rem;
+            letter-spacing: -1px;
         }
 
-        ul {
-            list-style-type: none;
-        }
-
-        li {
-            margin-bottom: 0.5rem;
-            position: relative;
-            padding-left: 1.5rem;
-        }
-
-        li::before {
-            content: "•";
-            color: var(--accent-blue);
-            position: absolute;
-            left: 0;
-            font-weight: bold;
-        }
-
-        /* Terminal installation box block */
-        .terminal-box {
-            background-color: var(--bg-terminal);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 1rem;
-            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
-            font-size: 0.95rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 1rem;
-        }
-
-        .command-text {
-            color: #7abcfa;
-            white-space: nowrap;
-            overflow-x: auto;
-            padding-right: 1rem;
-        }
-
-        .btn-copy {
-            background-color: var(--border);
-            color: var(--text-main);
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            transition: background 0.2s ease;
-            white-space: nowrap;
-        }
-
-        .btn-copy:hover {
-            background-color: var(--accent-blue);
-            color: var(--bg-main);
-        }
-
-        .btn-github {
-            display: inline-block;
-            background-color: var(--accent-blue);
-            color: var(--bg-main);
-            text-decoration: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 6px;
-            font-weight: bold;
-            margin-top: 1rem;
-            transition: opacity 0.2s ease;
-        }
-
-        .btn-github:hover {
-            opacity: 0.9;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 4rem;
+        .hero p {
+            font-size: 1.2rem;
             color: var(--text-muted);
+        }
+
+        /* --- FEATURES SECTION --- */
+        .features-section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background-color: var(--bg-card);
+            border: 1px solid rgba(122, 162, 247, 0.1);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: left;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-blue);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .feature-card h3 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.3rem;
+            color: #ffffff;
+        }
+
+        .feature-card p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .project-tag {
+            font-size: 0.75rem;
+            padding: 0.1rem 0.4rem;
+            border-radius: 4px;
+            font-weight: 700;
+            vertical-align: middle;
+            margin-left: 5px;
+            text-transform: uppercase;
+        }
+
+        .tag-ser {
+            background-color: var(--accent-pink);
+            color: var(--bg-main);
+        }
+
+        .tag-editor {
+            background-color: var(--accent-blue);
+            color: var(--bg-main);
+        }
+
+        /* --- DOWNLOAD PORTAL --- */
+        .download-box {
+            max-width: 600px;
+            margin: 4rem auto;
+            background-color: var(--bg-card);
+            border: 1px solid var(--accent-blue);
+            border-radius: 8px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .download-box h2 {
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.8rem 1.8rem;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-exe {
+            background-color: var(--accent-blue);
+            color: var(--bg-main);
+        }
+
+        .btn-exe:hover {
+            background-color: #9abaff;
+            box-shadow: 0 0 15px rgba(122, 162, 247, 0.4);
+        }
+
+        .btn-py {
+            background-color: transparent;
+            color: var(--accent-teal);
+            border: 2px solid var(--accent-teal);
+        }
+
+        .btn-py:hover {
+            background-color: var(--accent-teal);
+            color: var(--bg-main);
+            box-shadow: 0 0 15px rgba(0, 255, 196, 0.3);
+        }
+
+        /* --- SECURITY WARNING BANNER --- */
+        .security-alert {
+            background-color: #1a1b26;
+            border: 1px solid var(--accent-pink);
+            padding: 1.2rem;
+            border-radius: 6px;
+            text-align: left;
+            margin-top: 1rem;
+        }
+
+        .security-alert-title {
+            color: var(--accent-pink);
+            font-weight: bold;
+            margin: 0 0 0.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        .security-alert-text {
             font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin: 0;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <h1>⚡ LAZYEDITOR BETA </h1>
-            <p>A lightning-fast, reactive terminal text editor built with Python and Textual.</p>
-            <p>Designed for developers who demand seamless performance and intuitive navigation in their coding workflow.</p>
-            <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);">
-                Note: This is a BETA release. Expect some features to be in early stages of development and potential bugs.
-            </p>
-        </header>
-
-        <div class="card">
-            <h2>Features</h2>
-            <ul>
-                <li><strong>Micro-Autosave:</strong> Every single typed keystroke saves straight to disk immediately.</li>
-                <li><strong>Sidebar Navigation:</strong> Built-in dynamic folder tree explorer panel.</li>
-                <li><strong>Integrated Terminal (BETA):</strong> Run system commands seamlessly without leaving the workspace window.</li>
-                <li><strong>Tokyo Night Styling:</strong> Clean aesthetic engineered directly for developers.</li>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="brand-group">
+                <a href="#" class="nav-brand brand-editor">LAZYEDITOR</a>
+                <a href="https://github.com/Janmey-Sachdev/LAZYSER.git" target="_blank" class="nav-brand brand-ser">
+                    LAZYSER <span class="git-icon">&nearr;</span>
+                </a>
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="#features" class="nav-link">Features</a></li>
+                <li class="nav-item"><a href="#download" class="nav-link">Download</a></li>
             </ul>
         </div>
+    </nav>
 
-        <div class="card">
-            <h2>Installation</h2>
-            <p>Clone the beta repository using the command block below to get started:</p>
+    <header class="hero">
+        <h1>Development Suite Workspace</h1>
+        <p>Explore high-performance workspace tools optimized for fluid environment management, text configurations, and custom browser engines.</p>
+    </header>
+
+    <section id="features" class="features-section">
+        <h2>Engineered Capabilities</h2>
+        <div class="features-grid">
             
-            <div class="terminal-box">
-                <div class="command-text" id="install-cmd">git clone https://github.com/Janmey-Sachdev/LAZYEDITOR-BETA.git</div>
-                <button class="btn-copy" onclick="copyCommand()">Copy</button>
+            <div class="feature-card">
+                <span class="feature-icon" style="color: var(--accent-pink);">🌐</span>
+                <h3>2 Sidebars Layout <span class="project-tag tag-ser">LAZYSER</span></h3>
+                <p>Maximize your browser real estate. Simultaneously display active tab grouping pipelines along the left viewport dock while pinning modular extensions and developer tool trees on the right panel.</p>
             </div>
 
-            <p style="margin-top: 1.5rem; font-size: 0.9rem; color: var(--text-muted);">
-                Note: Ensure you have <code>pip install textual</code> installed in your local python framework prior to boot.
-            </p>
+            <div class="feature-card">
+                <span class="feature-icon" style="color: var(--accent-teal);">⏳</span>
+                <h3>Smart History Saving <span class="project-tag tag-ser">LAZYSER</span></h3>
+                <p>Advanced state preservation for surfing sessions. Securely log page nodes and back-end form histories locally so sessions recovery is instantaneous if an unexpected app restart occurs.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon" style="color: var(--accent-blue);">🧠</span>
+                <h3>Context AI Engine <span class="project-tag tag-editor">LAZYEDITOR</span></h3>
+                <p>Context-aware code inline processing. Run swift predictions, code block transformations, and logical syntax diagnostic auditing directly out of your custom editor terminal views.</p>
+            </div>
+
         </div>
+    </section>
 
-        <div style="text-align: center;">
-            <a href="https://github.com/Janmey-Sachdev/LAZYEDITOR-BETA.git" target="_blank" class="btn-github">
-            <div class="download-section" style="text-align: center; margin: 1.5rem 0 2.5rem 0;">
-    <p style="margin-bottom: 0.75rem; color: var(--text-main); font-weight: 500;"
-</div>
-                View Source on GitHub
-            </a>
-        </div>
-
-        <footer>
-            <p>&copy; 2026 LAZY EDITOR Project. By Jan Management System.</p>
-             <p align="center">THANK YOU SO MUCH!</p>
-        </footer>
-    </div>
-
-    <script>
-        function copyCommand() {
-            // Get the text from the layout element
-            const commandText = document.getElementById('install-cmd').innerText;
+    <section id="download" class="download-container">
+        <div class="download-box">
+            <h2>Get Started with LazyEditor</h2>
+            <p style="color: var(--text-muted); margin-bottom: 2rem;">Select your preferred runtime architecture to begin setup installation:</p>
             
-            // Write to the user's native device clipboard
-            navigator.clipboard.writeText(commandText).then(() => {
-                const copyBtn = document.querySelector('.btn-copy');
-                copyBtn.innerText = 'Copied!';
-                copyBtn.style.backgroundColor = '#9ece6a'; // Green accent feedback
-                copyBtn.style.color = '#1a1b26';
+            <div class="btn-group">
+                <a href="LazyEditor_Setup.exe" class="btn btn-exe">Download Installer (.exe)</a>
+                <a href="main.py" class="btn btn-py" download>Download Script (.py)</a>
+            </div>
 
-                // Reset button text state after a short period
-                setTimeout(() => {
-                    copyBtn.innerText = 'Copy';
-                    copyBtn.style.backgroundColor = '';
-                    copyBtn.style.color = '';
-                }, 2000);
-            }).catch(err => {
-                console.error('Failed to copy text: ', err);
-            });
-        }
-    </script>
+            <div class="security-alert">
+                <p class="security-alert-title">🛑 Windows Application Control Policy Warning?</p>
+                <p class="security-alert-text">
+                    Because this custom development build is independent and unsigned, Windows Smart App Control may flag it. To fix this: 
+                    <strong>Right-click</strong> the downloaded <code>.exe</code> &rarr; select <strong>Properties</strong> &rarr; check the <strong>Unblock</strong> checkbox at the very bottom of the General tab &rarr; click <strong>Apply</strong>. Or, choose the raw Python variant!
+                </p>
+            </div>
+        </div>
+    </section>
+
 </body>
 </html>
