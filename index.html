@@ -26,7 +26,7 @@
             line-height: 1.6;
         }
 
-        /* --- STICKY NAVBAR WITH TWO MAIN MENUS --- */
+        /* --- STICKY TWO-MENU NAVIGATION BAR --- */
         .navbar {
             background-color: var(--bg-main);
             border-bottom: 2px solid var(--accent-blue);
@@ -197,38 +197,70 @@
             color: var(--bg-main);
         }
 
-        /* --- DOWNLOAD PORTAL --- */
-        .download-box {
-            max-width: 600px;
+        /* --- DOWNLOAD PORTAL CONTAINER & BOXES --- */
+        .download-container {
+            max-width: 1100px;
             margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .download-container h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .portal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 2.5rem;
+        }
+
+        @media (max-width: 600px) {
+            .portal-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .download-box {
             background-color: var(--bg-card);
-            border: 1px solid var(--accent-blue);
+            border: 1px solid rgba(122, 162, 247, 0.2);
             border-radius: 8px;
             padding: 2.5rem;
             text-align: center;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        .download-box h2 {
+        .download-box.box-ser {
+            border-color: rgba(247, 118, 142, 0.4);
+        }
+
+        .download-box h3 {
             margin-top: 0;
-            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
         }
 
         .btn-group {
             display: flex;
-            gap: 1.5rem;
+            gap: 1rem;
             justify-content: center;
-            margin-bottom: 2rem;
+            margin: 2rem 0;
             flex-wrap: wrap;
         }
 
         .btn {
-            padding: 0.8rem 1.8rem;
-            font-size: 1rem;
+            padding: 0.8rem 1.5rem;
+            font-size: 0.95rem;
             font-weight: 600;
             text-decoration: none;
             border-radius: 4px;
             transition: all 0.2s ease;
+            flex: 1;
+            min-width: 160px;
+            text-align: center;
         }
 
         .btn-exe {
@@ -236,9 +268,17 @@
             color: var(--bg-main);
         }
 
+        .box-ser .btn-exe {
+            background-color: var(--accent-pink);
+        }
+
         .btn-exe:hover {
-            background-color: #9abaff;
+            opacity: 0.9;
             box-shadow: 0 0 15px rgba(122, 162, 247, 0.4);
+        }
+
+        .box-ser .btn-exe:hover {
+            box-shadow: 0 0 15px rgba(247, 118, 142, 0.4);
         }
 
         .btn-py {
@@ -252,6 +292,30 @@
             color: var(--bg-main);
             box-shadow: 0 0 15px rgba(0, 255, 196, 0.3);
         }
+
+        /* --- SECURITY WARNING BANNER --- */
+        .security-alert {
+            background-color: #1a1b26;
+            border: 1px solid var(--accent-pink);
+            padding: 1.2rem;
+            border-radius: 6px;
+            text-align: left;
+            margin-top: auto;
+        }
+
+        .security-alert-title {
+            color: var(--accent-pink);
+            font-weight: bold;
+            margin: 0 0 0.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        .security-alert-text {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin: 0;
+        }
     </style>
 </head>
 <body>
@@ -259,7 +323,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="brand-group">
-                <a href="#" class="nav-brand brand-editor">LAZYSER</a>
+                <a href="#" class="nav-brand brand-editor">LAZYEDITOR</a>
                 <a href="https://github.com/Janmey-Sachdev/LAZYSER.git" target="_blank" class="nav-brand brand-ser">
                     LAZYSER <span class="git-icon">&nearr;</span>
                 </a>
@@ -274,8 +338,8 @@
     </nav>
 
     <header class="hero">
-        <h1>The LAZIES</h1>
-        <p>The text editor and browser all you need.</p>
+        <h1>Development Suite Workspace</h1>
+        <p>Explore high-performance workspace tools optimized for fluid environment management, text configurations, and custom browser engines.</p>
     </header>
 
     <section id="features" class="features-section">
@@ -304,24 +368,41 @@
     </section>
 
     <section id="download" class="download-container">
-        <div class="download-box">
-            <h2>Get Started with LazyEditor</h2>
-            <p style="color: var(--text-muted); margin-bottom: 2rem;">Select your preferred runtime architecture to begin setup installation:</p>
-            
-            <div class="btn-group">
-                <a href="LazyEditor_Setup.exe" class="btn btn-exe">Download Installer (.exe)</a>
-                <a href="main.py" class="btn btn-py" download>Download Script (.py)</a>
+        <h2>Get Started with Our Software Suite</h2>
+        <div class="portal-grid">
+
+            <div class="download-box box-editor">
+                <div>
+                    <h3>LazyEditor</h3>
+                    <p style="color: var(--text-muted);">Terminal environment setup optimized for responsive text, layout manipulation, and AI-driven syntax configurations.</p>
+                </div>
+                <div>
+                    <div class="btn-group">
+                        <a href="https://github.com/Janmey-Sachdev/LAZYSER-BETA/releases/download/v1.0.0/LazyEditor_Setup.exe" class="btn btn-exe">Download Installer (.exe)</a>
+                        <a href="main.py" class="btn btn-py" download>Source Script (.py)</a>
+                    </div>
+                    <div class="security-alert">
+                        <p class="security-alert-title">🛑 Windows Smart App Protection?</p>
+                        <p class="security-alert-text">If flagged: Right-click the downloaded <code>.exe</code> &rarr; <strong>Properties</strong> &rarr; check <strong>Unblock</strong> at the bottom &rarr; <strong>Apply</strong>.</p>
+                    </div>
+                </div>
             </div>
 
+            <div class="download-box box-ser">
+                <div>
+                    <h3>LazySer</h3>
+                    <p style="color: var(--text-muted);">Custom browsing workspace layout offering persistent session logging matrices and clean left-and-right tab utilities panels.</p>
+                </div>
+                <div>
+                    <div class="btn-group">
+                        <a href="https://github.com/Janmey-Sachdev/LAZYSER/releases/LazySer-Setup.zip" class="btn btn-exe">Download Installer (.exe)</a>
+                        <a href="main.py" class="btn btn-py" download>Source Script (.py)</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </section>
-     <section id="download" class="download-container">
-        <div class="download-box">
-            <h2>Get Started with LazySer</h2>
-            <p style="color: var(--text-muted); margin-bottom: 2rem;">Select your preferred runtime architecture to begin setup installation:</p>
-            
-            <div class="btn-group">
-                <a href="LazySer_Setup.exe" class="btn btn-exe">Download Installer (.exe)</a>
-                <a href="main.py" class="btn btn-py" download>Download Script (.py)</a>
 
 </body>
 </html>
