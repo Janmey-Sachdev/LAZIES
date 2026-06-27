@@ -26,7 +26,7 @@
             line-height: 1.6;
         }
 
-        /* --- STICKY TWO-MENU NAVIGATION BAR --- */
+        /* --- STICKY NAVBAR --- */
         .navbar {
             background-color: var(--bg-main);
             border-bottom: 2px solid var(--accent-blue);
@@ -44,44 +44,19 @@
             padding: 1rem 2rem;
         }
 
-        /* Left Branding Group */
-        .brand-group {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .nav-brand {
-            font-size: 1.4rem;
+        .nav-logo {
+            color: var(--text-main);
+            font-size: 1.5rem;
             font-weight: 800;
             text-decoration: none;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             transition: color 0.3s ease;
         }
 
-        .brand-editor {
-            color: var(--text-main);
-        }
-
-        .brand-editor:hover {
+        .nav-logo:hover {
             color: var(--accent-blue);
         }
 
-        .brand-ser {
-            color: var(--accent-pink);
-            background-color: var(--bg-button);
-            padding: 0.3rem 0.8rem;
-            border-radius: 4px;
-            border: 1px solid var(--accent-pink);
-        }
-
-        .brand-ser:hover {
-            background-color: var(--accent-pink);
-            color: var(--bg-main);
-            box-shadow: 0 0 10px rgba(247, 118, 142, 0.4);
-        }
-
-        /* Right Navigation Items */
         .nav-menu {
             display: flex;
             list-style: none;
@@ -102,8 +77,24 @@
             transition: all 0.3s ease;
         }
 
-        .nav-link:hover {
+        .nav-link:hover, .nav-link.active {
             color: var(--text-main);
+        }
+
+        /* Nav Accent Button for LAZYSER */
+        .nav-link.lazyser-btn {
+            background-color: var(--bg-button);
+            color: var(--accent-pink);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            border: 1px solid var(--accent-pink);
+            font-weight: 600;
+        }
+
+        .nav-link.lazyser-btn:hover {
+            background-color: var(--accent-pink);
+            color: var(--bg-main);
+            box-shadow: 0 0 10px rgba(247, 118, 142, 0.5);
         }
 
         .git-icon {
@@ -133,7 +124,7 @@
         /* --- FEATURES SECTION --- */
         .features-section {
             max-width: 1000px;
-            margin: 0 auto;
+            margin: 0 auto padding;
             padding: 2rem;
             text-align: center;
         }
@@ -177,90 +168,49 @@
             font-size: 0.95rem;
         }
 
-        .project-tag {
+        .badge-beta {
+            background-color: var(--accent-pink);
+            color: var(--bg-main);
             font-size: 0.75rem;
             padding: 0.1rem 0.4rem;
             border-radius: 4px;
             font-weight: 700;
             vertical-align: middle;
             margin-left: 5px;
-            text-transform: uppercase;
         }
 
-        .tag-ser {
-            background-color: var(--accent-pink);
-            color: var(--bg-main);
-        }
-
-        .tag-editor {
-            background-color: var(--accent-blue);
-            color: var(--bg-main);
-        }
-
-        /* --- DOWNLOAD PORTAL CONTAINER & BOXES --- */
-        .download-container {
-            max-width: 1100px;
-            margin: 4rem auto;
-            padding: 0 2rem;
-        }
-
-        .download-container h2 {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .portal-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-            gap: 2.5rem;
-        }
-
-        @media (max-width: 600px) {
-            .portal-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
+        /* --- DOWNLOAD PORTAL --- */
         .download-box {
+            max-width: 600px;
+            margin: 4rem auto;
             background-color: var(--bg-card);
-            border: 1px solid rgba(122, 162, 247, 0.2);
+            border: 1px solid var(--accent-blue);
             border-radius: 8px;
             padding: 2.5rem;
             text-align: center;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
         }
 
-        .download-box.box-ser {
-            border-color: rgba(247, 118, 142, 0.4);
-        }
-
-        .download-box h3 {
+        .download-box h2 {
             margin-top: 0;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         .btn-group {
             display: flex;
-            gap: 1rem;
+            gap: 1.5rem;
             justify-content: center;
-            margin: 2rem 0;
+            margin-bottom: 2rem;
             flex-wrap: wrap;
         }
 
         .btn {
-            padding: 0.8rem 1.5rem;
-            font-size: 0.95rem;
+            padding: 0.8rem 1.8rem;
+            font-size: 1rem;
             font-weight: 600;
             text-decoration: none;
             border-radius: 4px;
             transition: all 0.2s ease;
-            flex: 1;
-            min-width: 160px;
-            text-align: center;
         }
 
         .btn-exe {
@@ -268,17 +218,9 @@
             color: var(--bg-main);
         }
 
-        .box-ser .btn-exe {
-            background-color: var(--accent-pink);
-        }
-
         .btn-exe:hover {
-            opacity: 0.9;
+            background-color: #9abaff;
             box-shadow: 0 0 15px rgba(122, 162, 247, 0.4);
-        }
-
-        .box-ser .btn-exe:hover {
-            box-shadow: 0 0 15px rgba(247, 118, 142, 0.4);
         }
 
         .btn-py {
@@ -300,7 +242,7 @@
             padding: 1.2rem;
             border-radius: 6px;
             text-align: left;
-            margin-top: auto;
+            margin-top: 1rem;
         }
 
         .security-alert-title {
@@ -308,6 +250,9 @@
             font-weight: bold;
             margin: 0 0 0.5rem 0;
             font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .security-alert-text {
@@ -322,21 +267,23 @@
 
     <nav class="navbar">
         <div class="nav-container">
-            <div class="brand-group">
-                <a href="#" class="nav-brand brand-editor">LAZYEDITOR</a>
-            </div>
-            
+            <a href="#" class="nav-logo">LAZIES</a>
             <ul class="nav-menu">
-                <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="#" class="nav-link active">Home</a></li>
                 <li class="nav-item"><a href="#features" class="nav-link">Features</a></li>
                 <li class="nav-item"><a href="#download" class="nav-link">Download</a></li>
+                <li class="nav-item">
+                    <a href="https://github.com/Janmey-Sachdev/LAZYEDITOR.git" target="_blank" class="nav-link lazyser-btn">
+                        LAZYEDITOR<span class="git-icon">&nearr;</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>
 
     <header class="hero">
-        <h1>Development Suite Workspace</h1>
-        <p>Explore high-performance workspace tools optimized for fluid environment management and text configurations.</p>
+        <h1>Code Editing. Simplified.</h1>
+        <p>A fast, lightweight terminal text layout workspace designed for fluid environment navigation and smart text configuration pipelines.</p>
     </header>
 
     <section id="features" class="features-section">
@@ -344,49 +291,39 @@
         <div class="features-grid">
             
             <div class="feature-card">
-                <span class="feature-icon" style="color: var(--accent-pink);">🌐</span>
-                <h3>Sidebar Layout <span class="project-tag tag-ser">LAZYEDITOR</span></h3>
-                <p>Maximize your LazyEditor real estate. Continue working on files with sidebar. Just click and it opens the demanded file</p>
+                <span class="feature-icon" style="color: var(--accent-blue);">📁</span>
+                <h3>2 Sidebars Workspace</h3>
+                <p>Simultaneously manage local system directories on the left dock while handling file modules, buffers, and symbol mappings directly on the right tree.</p>
             </div>
 
             <div class="feature-card">
-                <span class="feature-icon" style="color: var(--accent-teal);">⏳</span>
-                <h3>Command Bar<span class="project-tag tag-ser">LAZYEDITOR</span></h3>
-                <p>Use the commnad bar to open, cd and much more. Just type and VOILA!</p>
+                <span class="feature-icon" style="color: var(--accent-teal);">💾</span>
+                <h3>Persistent History Saving</h3>
+                <p>Never lose an edit. Features automatic state tracking across operational file buffers, letting you safely pick up right where you left off between system updates.</p>
             </div>
 
             <div class="feature-card">
-                <span class="feature-icon" style="color: var(--accent-blue);">🧠</span>
-                <h3>Full Mouse Support <span class="project-tag tag-editor">LAZYEDITOR</span></h3>
-                <p>No need to use your keyboard for navigation. Use your mouse (as well as keyboard if you wish) to navigate through the app.</p>
+                <span class="feature-icon" style="color: var(--accent-pink);">🖱️</span>
+                <h3>AI Assistant <span class="badge-beta">BETA</span></h3>
+                <p>Context-aware code inline processing. Run code completions, dynamic structural updates, and log diagnostic auditing directly out of the text interface layout.</p>
             </div>
 
         </div>
     </section>
 
     <section id="download" class="download-container">
-        <h2>Get Started With Our Software</h2>
-        <div class="portal-grid">
-
-            <div class="download-box box-editor">
-                <div>
-                    <h3>LazyEditor</h3>
-                    <p style="color: var(--text-muted);">Terminal environment setup optimized for responsive text, layout manipulation, and full mouse cursor support.</p>
-                </div>
-                <div>
-                    <div class="btn-group">
-                        <a href="https://github.com/Janmey-Sachdev/LAZYEDITOR-BETA/releases/" class="btn btn-exe">Download Installer (.exe)</a>
-                        <a href="main.py" class="btn btn-py" download>Source Script (.py)</a>
-                    </div>
-                </div>
+        <div class="download-box">
+            <h2>Get Started with LazyEditor</h2>
+            <p style="color: var(--text-muted); margin-bottom: 2rem;">Select your preferred runtime architecture to begin setup installation:</p>
+            
+            <div class="btn-group">
+                <a href="https://github.com/Janmey-Sachdev/LAZYEDITOR/releases/latest" class="btn btn-exe">Download Installer (.exe)</a>
+                <a href="main.py" class="btn btn-py" download>Download Script (.py)</a>
             </div>
-                    <p style="color: var(--text-muted);">I assure you that more update will come soon.</p>
-            <div class="download-box box-ser">
-                </div>
+                </p>
             </div>
-
         </div>
     </section>
-<p style="color: var(--text-muted);">&copy;The LAZIES 2026.</p>
+
 </body>
 </html>
